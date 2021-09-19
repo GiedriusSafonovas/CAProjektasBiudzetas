@@ -3,8 +3,9 @@ package lt.codeacademy;
 import java.time.LocalDate;
 
 public class PajamuIrasas {
+    private final String KATEGORIJA = "Pajamos";
     private double suma;
-    private int kategorija;
+    private int indeksas;
     private LocalDate data;
     private boolean pozymisArIBanka;
     private String papildomaInfo;
@@ -16,7 +17,7 @@ public class PajamuIrasas {
         this.papildomaInfo = papildomaInfo;
         this.data = LocalDate.now();
         counter++;
-        this.kategorija = counter;
+        this.indeksas = counter;
     }
 
     PajamuIrasas(double suma, boolean pozymisArIBanka){
@@ -24,7 +25,7 @@ public class PajamuIrasas {
         this.pozymisArIBanka = pozymisArIBanka;
         this.data = LocalDate.now();
         counter++;
-        this.kategorija = counter;
+        this.indeksas = counter;
     }
 
     public double getSuma() {
@@ -43,7 +44,7 @@ public class PajamuIrasas {
         return papildomaInfo;
     }
 
-    public int getKategorija() {
-        return kategorija;
+    public int getIndeksas() {
+        return indeksas;
     }
 }

@@ -3,8 +3,9 @@ package lt.codeacademy;
 import java.time.LocalDateTime;
 
 public class IslaiduIrasas {
+    private final String KATEGORIJA = "Išlaidos";
     private double suma;
-    private int kategorija;
+    private int indeksas;
     private LocalDateTime dataSuLaiku;
     private String atsiskaitymoBudas;
     private String papildomaInfo;
@@ -16,7 +17,7 @@ public class IslaiduIrasas {
         this.papildomaInfo = papildomaInfo;
         this.dataSuLaiku = LocalDateTime.now();
         counter++;
-        this.kategorija = counter;
+        this.indeksas = counter;
     }
 
     IslaiduIrasas(double suma, String atsiskaitymoBudas){
@@ -24,7 +25,7 @@ public class IslaiduIrasas {
         this.atsiskaitymoBudas = atsiskaitymoBudas;
         this.dataSuLaiku = LocalDateTime.now();
         counter++;
-        this.kategorija = counter;
+        this.indeksas = counter;
     }
 
     public double getSuma() {
@@ -43,7 +44,9 @@ public class IslaiduIrasas {
         return papildomaInfo;
     }
 
-    public int getKategorija() {
-        return kategorija;
+    public int getIndeksas() {
+        return indeksas;
     }
+
+
 }
