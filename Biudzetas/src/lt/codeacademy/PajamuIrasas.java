@@ -2,49 +2,37 @@ package lt.codeacademy;
 
 import java.time.LocalDate;
 
-public class PajamuIrasas {
-    private final String KATEGORIJA = "Pajamos";
-    private double suma;
-    private int indeksas;
-    private LocalDate data;
+public class PajamuIrasas extends Irasas{
+    private final static String KATEGORIJA = "P";
     private boolean pozymisArIBanka;
-    private String papildomaInfo;
     private static int counter;
 
     PajamuIrasas(double suma, boolean pozymisArIBanka, String papildomaInfo){
-        this.suma = suma;
+        super(KATEGORIJA + counter,suma,papildomaInfo);
         this.pozymisArIBanka = pozymisArIBanka;
-        this.papildomaInfo = papildomaInfo;
-        this.data = LocalDate.now();
         counter++;
-        this.indeksas = counter;
     }
 
-    PajamuIrasas(double suma, boolean pozymisArIBanka){
-        this.suma = suma;
+//    PajamuIrasas(double suma, boolean pozymisArIBanka){
+//        this.suma = suma;
+//        this.pozymisArIBanka = pozymisArIBanka;
+//        this.data = LocalDate.now();
+//        counter++;
+//        this.indeksas = counter;
+//    }
+
+
+    public void setPozymisArIBanka(boolean pozymisArIBanka) {
         this.pozymisArIBanka = pozymisArIBanka;
-        this.data = LocalDate.now();
-        counter++;
-        this.indeksas = counter;
-    }
-
-    public double getSuma() {
-        return suma;
-    }
-
-    public LocalDate getData() {
-        return data;
     }
 
     public boolean isPozymisArIBanka() {
         return pozymisArIBanka;
     }
 
-    public String getPapildomaInfo() {
-        return papildomaInfo;
+    @Override
+    public String toString(){
+        return (super.toString() + "Ar pinigai gauti į banką: " + pozymisArIBanka);
     }
 
-    public int getIndeksas() {
-        return indeksas;
-    }
 }

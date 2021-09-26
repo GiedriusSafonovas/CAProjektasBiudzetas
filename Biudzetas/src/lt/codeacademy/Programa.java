@@ -24,7 +24,7 @@ public class Programa {
             }
 
             switch (komanda) {
-                case "p":
+                case "1":
                     System.out.println("Įveskite sumą");
                     suma = dblsc.nextDouble();
                     System.out.println("Ar pinigai gasuti į banką(true/false)?");
@@ -33,7 +33,7 @@ public class Programa {
                     papildomaInfo = strsc.nextLine();
                     b1.pridetiPajamuIrasa(suma, bankas, papildomaInfo);
                     break;
-                case "i":
+                case "2":
                     System.out.println("Įveskite sumą");
                     suma = dblsc.nextDouble();
                     System.out.println("Atsiskaitymo būdas");
@@ -42,48 +42,44 @@ public class Programa {
                     papildomaInfo = strsc.nextLine();
                     b1.pridetiIslaiduIrasa(suma, atsiskaitymoBudas, papildomaInfo);
                     break;
-                case "info":
+                case "3":
+                    System.out.println("Įveskite įrašo kodą");
+                    komanda = strsc.nextLine();
+                    b1.remove(komanda);
+                    break;
+                case "4":
                     meniu.komandos2();
                     komanda = strsc.nextLine();
-                    if (komanda.equals("p")) {
-                        System.out.println("Nurodykite pajamų įrašo numerį arba [0] visiems įrašams gauti");
-                        nr = intsc.nextInt();
-                        if (nr == 0) {
-                            System.out.println("***");
-                            b1.printPajamos();
-                            System.out.println("***");
-                        } else {
-                            System.out.println("***");
-                            b1.gautiPajamuIrasa(nr);
-                            System.out.println("***");
-                        }
-                    } else if (komanda.equals("i")) {
-                        System.out.println("Nurodykite išlaidų įrašo numerį arba [0] visiems įrašams gauti");
-                        nr = intsc.nextInt();
-                        if (nr == 0) {
-                            System.out.println("***");
-                            b1.printIslaidos();
-                            System.out.println("***");
-                        } else {
-                            System.out.println("***");
-                            b1.gautiIslaiduIrasa(nr);
-                            System.out.println("***");
-                        }
-                    } else {
-                        System.out.println("~Neteisinga komanda");
+                    switch (komanda){
+                        case "1":
+                            b1.printIrasai();
+                            break;
+                        case "2":
+                            System.out.println("Įveskite įrašo kodą");
+                            komanda = strsc.nextLine();
+                            b1.gautiIrasa(komanda);
+                            break;
+                        case  "3":
+                            System.out.println("Balansas: " + b1.balansas());
+                            break;
+                        case  "4":
+                            System.out.println("Pajamų įrašai:\n" + b1.gautiPajamuIrasus());
+                            break;
+                        case  "5":
+                            System.out.println("Išlaidų įrašai:\n" + b1.gautiIslaiduIrasus());
+                            break;
+                        default:
+                            System.out.println("Neteisinga komanda");
                     }
                     break;
-                case "b":
-                    System.out.println("Balansas: " + b1.balansas());
-                    break;
-                case "r":
-                    meniu.komandos2();
+                case "5":
+                    b1.printIrasai();
+                    System.out.println("Įveskite įrašo kodą");
                     komanda = strsc.nextLine();
-                    System.out.println("Įveskite numerį");
-                    nr = intsc.nextInt();
-                    b1.remove(nr, komanda);
+                    b1.redaguoti(komanda);
+                    break;
                 default:
-                    System.out.println("*Neteisinga komanda");
+                    System.out.println("Neteisinga komanda");
             }
 
         }

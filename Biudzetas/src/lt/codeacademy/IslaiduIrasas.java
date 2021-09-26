@@ -1,52 +1,39 @@
 package lt.codeacademy;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class IslaiduIrasas {
-    private final String KATEGORIJA = "Išlaidos";
-    private double suma;
-    private int indeksas;
-    private LocalDateTime dataSuLaiku;
+public class IslaiduIrasas extends Irasas {
+    private final static String KATEGORIJA = "I";
     private String atsiskaitymoBudas;
-    private String papildomaInfo;
     private static int counter;
 
     IslaiduIrasas(double suma, String atsiskaitymoBudas, String papildomaInfo){
-        this.suma = suma;
+        super((KATEGORIJA+counter), suma, papildomaInfo);
         this.atsiskaitymoBudas = atsiskaitymoBudas;
-        this.papildomaInfo = papildomaInfo;
-        this.dataSuLaiku = LocalDateTime.now();
         counter++;
-        this.indeksas = counter;
     }
 
-    IslaiduIrasas(double suma, String atsiskaitymoBudas){
-        this.suma = suma;
+//    IslaiduIrasas(double suma, String atsiskaitymoBudas){
+//        this.suma = suma;
+//        this.atsiskaitymoBudas = atsiskaitymoBudas;
+//        this.data = LocalDate.now();
+//        counter++;
+//        this.indeksas = counter;
+//    }
+
+
+    public void setAtsiskaitymoBudas(String atsiskaitymoBudas) {
         this.atsiskaitymoBudas = atsiskaitymoBudas;
-        this.dataSuLaiku = LocalDateTime.now();
-        counter++;
-        this.indeksas = counter;
-    }
-
-    public double getSuma() {
-        return suma;
-    }
-
-    public LocalDateTime getDataSuLaiku() {
-        return dataSuLaiku;
     }
 
     public String getAtsiskaitymoBudas() {
         return atsiskaitymoBudas;
     }
 
-    public String getPapildomaInfo() {
-        return papildomaInfo;
+    @Override
+    public String toString(){
+        return super.toString() + "atsiskaitymo būdas: " + atsiskaitymoBudas;
     }
-
-    public int getIndeksas() {
-        return indeksas;
-    }
-
 
 }

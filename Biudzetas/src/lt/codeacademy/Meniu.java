@@ -9,17 +9,20 @@ public class Meniu {
     private int nr;
 
     public void komandos1(){
-        System.out.println("[p] - naujas pajamų įrašas");
-        System.out.println("[i] - naujas išlaidų įrašas");
-        System.out.println("[b] - balansas");
-        System.out.println("[r] - pašalinti įrašą");
-        System.out.println("[info] - informacija");
+        System.out.println("[1] - naujas pajamų įrašas");
+        System.out.println("[2] - naujas išlaidų įrašas");
+        System.out.println("[3] - pašalinti įrašą");
+        System.out.println("[4] - informacija");
+        System.out.println("[5] - redaguoti");
         System.out.println("[x] - pabaiga");
     }
 
     public void komandos2(){
-        System.out.println("[p] - pajamų įrašai");
-        System.out.println("[i] - išlaidų įrašai");
+        System.out.println("[1] - visi įrašai");
+        System.out.println("[2] - įrašas pagal nr.");
+        System.out.println("[3] - balansas");
+        System.out.println("[4] - pajamų įrašai");
+        System.out.println("[5] - islaidų įrašai");
     }
 
 
