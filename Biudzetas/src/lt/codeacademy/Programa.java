@@ -1,24 +1,21 @@
 package lt.codeacademy;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Programa {
 
     public static void main(String[] args) {
         Biudzetas b1 = new Biudzetas();
-        Meniu meniu = new Meniu();
         double suma;
         boolean bankas;
         String atsiskaitymoBudas;
         String papildomaInfo;
-        Scanner strsc = new Scanner(System.in);
-        Scanner intsc = new Scanner(System.in);
-        Scanner dblsc = new Scanner(System.in);
         String komanda;
         int nr;
         while (true) {
-            meniu.komandos1();
-            komanda = strsc.nextLine();
+            Meniu.komandos1();
+            komanda = Scan.getStr();
             if (komanda.equals("x")) {
                 break;
             }
@@ -26,46 +23,46 @@ public class Programa {
             switch (komanda) {
                 case "1":
                     System.out.println("Įveskite sumą");
-                    suma = dblsc.nextDouble();
+                    suma = Scan.getDbl();
                     System.out.println("Ar pinigai gasuti į banką(true/false)?");
-                    bankas = new Scanner(System.in).nextBoolean();
+                    bankas = Scan.getBool();
                     System.out.println("Iveskite papildomą info");
-                    papildomaInfo = strsc.nextLine();
+                    papildomaInfo = Scan.getStr();
                     b1.pridetiPajamuIrasa(suma, bankas, papildomaInfo);
                     break;
                 case "2":
                     System.out.println("Įveskite sumą");
-                    suma = dblsc.nextDouble();
+                    suma = Scan.getDbl();
                     System.out.println("Atsiskaitymo būdas");
-                    atsiskaitymoBudas = strsc.nextLine();
+                    atsiskaitymoBudas = Scan.getStr();
                     System.out.println("Iveskite papildomą info");
-                    papildomaInfo = strsc.nextLine();
+                    papildomaInfo = Scan.getStr();
                     b1.pridetiIslaiduIrasa(suma, atsiskaitymoBudas, papildomaInfo);
                     break;
                 case "3":
                     System.out.println("Įveskite įrašo kodą");
-                    komanda = strsc.nextLine();
+                    komanda = Scan.getStr();
                     b1.remove(komanda);
                     break;
                 case "4":
-                    meniu.komandos2();
-                    komanda = strsc.nextLine();
-                    switch (komanda){
+                    Meniu.komandos2();
+                    komanda = Scan.getStr();
+                    switch (komanda) {
                         case "1":
                             b1.printIrasai();
                             break;
                         case "2":
                             System.out.println("Įveskite įrašo kodą");
-                            komanda = strsc.nextLine();
+                            komanda = Scan.getStr();
                             b1.gautiIrasa(komanda);
                             break;
-                        case  "3":
+                        case "3":
                             System.out.println("Balansas: " + b1.balansas());
                             break;
-                        case  "4":
+                        case "4":
                             System.out.println("Pajamų įrašai:\n" + b1.gautiPajamuIrasus());
                             break;
-                        case  "5":
+                        case "5":
                             System.out.println("Išlaidų įrašai:\n" + b1.gautiIslaiduIrasus());
                             break;
                         default:
@@ -73,9 +70,13 @@ public class Programa {
                     }
                     break;
                 case "5":
+                    if(!b1.printIrasai()){
+                        b1.printIrasai();
+                        break;
+                    }
                     b1.printIrasai();
                     System.out.println("Įveskite įrašo kodą");
-                    komanda = strsc.nextLine();
+                    komanda = Scan.getStr();
                     b1.redaguoti(komanda);
                     break;
                 default:
