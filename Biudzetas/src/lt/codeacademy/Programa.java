@@ -1,7 +1,5 @@
 package lt.codeacademy;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
 
 public class Programa {
 
@@ -12,7 +10,6 @@ public class Programa {
         String atsiskaitymoBudas;
         String papildomaInfo;
         String komanda;
-        int nr;
         while (true) {
             Meniu.komandos1();
             komanda = Scan.getStr();
@@ -24,11 +21,11 @@ public class Programa {
                 case "1":
                     System.out.println("Įveskite sumą");
                     suma = Scan.getDbl();
-                    System.out.println("Ar pinigai gasuti į banką(true/false)?");
+                    System.out.println("Ar pinigai gauti į banką(true/false)?");
                     bankas = Scan.getBool();
                     System.out.println("Iveskite papildomą info");
                     papildomaInfo = Scan.getStr();
-                    b1.pridetiPajamuIrasa(suma, bankas, papildomaInfo);
+                    b1.pridetiIrasa(new PajamuIrasas(suma, bankas, papildomaInfo));
                     break;
                 case "2":
                     System.out.println("Įveskite sumą");
@@ -37,12 +34,11 @@ public class Programa {
                     atsiskaitymoBudas = Scan.getStr();
                     System.out.println("Iveskite papildomą info");
                     papildomaInfo = Scan.getStr();
-                    b1.pridetiIslaiduIrasa(suma, atsiskaitymoBudas, papildomaInfo);
+                    b1.pridetiIrasa(new IslaiduIrasas(suma, atsiskaitymoBudas, papildomaInfo));
                     break;
                 case "3":
                     System.out.println("Įveskite įrašo kodą");
-                    komanda = Scan.getStr();
-                    b1.remove(komanda);
+                    b1.remove(Scan.getStr());
                     break;
                 case "4":
                     Meniu.komandos2();
@@ -53,8 +49,7 @@ public class Programa {
                             break;
                         case "2":
                             System.out.println("Įveskite įrašo kodą");
-                            komanda = Scan.getStr();
-                            b1.gautiIrasa(komanda);
+                            b1.gautiIrasa(Scan.getStr());
                             break;
                         case "3":
                             System.out.println("Balansas: " + b1.balansas());
@@ -71,13 +66,20 @@ public class Programa {
                     break;
                 case "5":
                     if(!b1.printIrasai()){
-                        b1.printIrasai();
                         break;
                     }
-                    b1.printIrasai();
                     System.out.println("Įveskite įrašo kodą");
-                    komanda = Scan.getStr();
-                    b1.redaguoti(komanda);
+                    b1.redaguoti(Scan.getStr());
+                    break;
+                case "6":
+                    if(Failas.issaugotiDuomenis(b1.getIrasas())){
+                        System.out.println("Duomenys išsaugoti");
+                    }
+                    break;
+                case "7":
+                    if(Failas.gautiDuomenis(b1)){
+                        System.out.println("Duomenys užkrauti");
+                    }
                     break;
                 default:
                     System.out.println("Neteisinga komanda");

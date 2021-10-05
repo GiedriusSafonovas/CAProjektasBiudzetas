@@ -1,5 +1,6 @@
 package lt.codeacademy;
 
+
 import java.time.LocalDate;
 
 public class PajamuIrasas extends Irasas{
@@ -13,13 +14,10 @@ public class PajamuIrasas extends Irasas{
         counter++;
     }
 
-//    PajamuIrasas(double suma, boolean pozymisArIBanka){
-//        this.suma = suma;
-//        this.pozymisArIBanka = pozymisArIBanka;
-//        this.data = LocalDate.now();
-//        counter++;
-//        this.indeksas = counter;
-//    }
+    PajamuIrasas(String indeksas, double suma, LocalDate data, boolean pozymisArIBanka, String papildomaInfo){
+        super((KATEGORIJA+counter), suma, data, papildomaInfo);
+        this.pozymisArIBanka = pozymisArIBanka;
+    }
 
 
     public void setPozymisArIBanka(boolean pozymisArIBanka) {
@@ -32,7 +30,7 @@ public class PajamuIrasas extends Irasas{
 
     @Override
     public String toString(){
-        return (super.toString() + "Ar pinigai gauti į banką: " + pozymisArIBanka);
+        return (super.toString() + String.format("Ar pinigai gauti į banką: %b\n",pozymisArIBanka));
     }
 
 }

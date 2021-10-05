@@ -1,7 +1,6 @@
 package lt.codeacademy;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 public class Irasas {
     private String indeksas;
@@ -14,6 +13,17 @@ public class Irasas {
         this.suma = suma;
         this.papildomaInfo = papildomaInfo;
         this.data = LocalDate.now();
+    }
+
+    Irasas(String indeksas){
+        this.indeksas = indeksas;
+    }
+
+    Irasas(String indeksas, double suma, LocalDate data, String papildomaInfo){
+        this.indeksas = indeksas;
+        this.suma = suma;
+        this.papildomaInfo = papildomaInfo;
+        this.data = data;
     }
 
     public double getSuma() {
@@ -46,7 +56,7 @@ public class Irasas {
 
     @Override
     public String toString() {
-        return String.format("Išlaidų irašo nr: %s\nSuma: %.2f\nData: %s\nPapildoma info: %s\n",
+        return String.format("Įrašo nr: %s\nSuma: %.2f\nData: %s\nPapildoma info: %s\n",
                 indeksas, suma, data, papildomaInfo);
     }
 

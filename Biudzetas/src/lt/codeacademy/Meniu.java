@@ -10,6 +10,7 @@ public class Meniu {
         System.out.println("[3] - pašalinti įrašą");
         System.out.println("[4] - informacija");
         System.out.println("[5] - redaguoti");
+        System.out.println("[6] - išsaugoti duomenis");
         System.out.println("[x] - pabaiga");
     }
 

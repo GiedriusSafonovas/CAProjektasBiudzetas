@@ -1,7 +1,7 @@
 package lt.codeacademy;
 
+
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 public class IslaiduIrasas extends Irasas {
     private final static String KATEGORIJA = "I";
@@ -14,14 +14,10 @@ public class IslaiduIrasas extends Irasas {
         counter++;
     }
 
-//    IslaiduIrasas(double suma, String atsiskaitymoBudas){
-//        this.suma = suma;
-//        this.atsiskaitymoBudas = atsiskaitymoBudas;
-//        this.data = LocalDate.now();
-//        counter++;
-//        this.indeksas = counter;
-//    }
-
+    IslaiduIrasas(String indeksas, double suma, LocalDate data, String atsiskaitymoBudas, String papildomaInfo){
+        super((KATEGORIJA+counter), suma, data, papildomaInfo);
+        this.atsiskaitymoBudas = atsiskaitymoBudas;
+    }
 
     public void setAtsiskaitymoBudas(String atsiskaitymoBudas) {
         this.atsiskaitymoBudas = atsiskaitymoBudas;
@@ -33,7 +29,7 @@ public class IslaiduIrasas extends Irasas {
 
     @Override
     public String toString(){
-        return super.toString() + "atsiskaitymo būdas: " + atsiskaitymoBudas;
+        return (super.toString() + String.format("atsiskaitymo būdas: %s\n",atsiskaitymoBudas));
     }
 
 }
