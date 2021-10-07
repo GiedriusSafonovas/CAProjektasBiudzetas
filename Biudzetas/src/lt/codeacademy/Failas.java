@@ -33,9 +33,12 @@ public class Failas {
                         (irasai.get(i) instanceof IslaiduIrasas) ?
                                 ((IslaiduIrasas) irasai.get(i)).getAtsiskaitymoBudas() :
                                 "",
-                        irasai.get(i).getPapildomaInfo()) + System.lineSeparator());
+                        irasai.get(i).getPapildomaInfo()));
+                if(i != (irasai.size()-1)){
+                    fw.write(System.lineSeparator());
+                }
+
             }
-            fw.write("\b");
             fw.close();
             return true;
         } catch (IOException e) {
@@ -51,8 +54,6 @@ public class Failas {
             sc.nextLine();
             sc.useDelimiter(",");
             while (sc.hasNext()) {
-//                System.out.println(sc.next());
-//                System.out.println(sc.next());
                 String kodas = sc.next().trim();
                 Double suma = Double.parseDouble(sc.next());
                 LocalDate data = LocalDate.parse(sc.next(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
