@@ -17,6 +17,7 @@ public class IslaiduIrasas extends Irasas {
     IslaiduIrasas(String indeksas, double suma, LocalDate data, String atsiskaitymoBudas, String papildomaInfo){
         super((KATEGORIJA+counter), suma, data, papildomaInfo);
         this.atsiskaitymoBudas = atsiskaitymoBudas;
+        counter++;
     }
 
     public void setAtsiskaitymoBudas(String atsiskaitymoBudas) {

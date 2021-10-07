@@ -3,7 +3,7 @@ package lt.codeacademy;
 
 public class Programa {
 
-    public static void main(String[] args) {
+    public static void start() {
         Biudzetas b1 = new Biudzetas();
         double suma;
         boolean bankas;

@@ -17,6 +17,7 @@ public class PajamuIrasas extends Irasas{
     PajamuIrasas(String indeksas, double suma, LocalDate data, boolean pozymisArIBanka, String papildomaInfo){
         super((KATEGORIJA+counter), suma, data, papildomaInfo);
         this.pozymisArIBanka = pozymisArIBanka;
+        counter++;
     }
 
 

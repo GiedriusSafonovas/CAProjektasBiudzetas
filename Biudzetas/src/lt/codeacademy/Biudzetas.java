@@ -32,7 +32,7 @@ public class Biudzetas {
                 islaiduSuma += irasas.get(i).getSuma();
             }
         }
-        return pajamuSuma - islaiduSuma;
+        return (Math.round((pajamuSuma - islaiduSuma)*100.0))/100.0;
     }
 
     public boolean printIrasai() {
