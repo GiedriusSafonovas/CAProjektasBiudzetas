@@ -86,8 +86,9 @@ public class Biudzetas {
             System.out.println("Tokio įrašo nėra");
             return;
         } else {
-            int irasoIndeksas = irasas.indexOf(ieskomasIrasas);
-            String[] irasuTekstas = irasas.get(irasoIndeksas).toString().split("\n");
+//            int irasoIndeksas = irasas.indexOf(ieskomasIrasas);
+            Irasas koreguojamasIrasas = irasas.get(irasas.indexOf(ieskomasIrasas));
+            String[] irasuTekstas = koreguojamasIrasas.toString().split("\n");
             for (int j = 1; j < irasuTekstas.length; j++) {
                 System.out.println(irasuTekstas[j]);
                 int komanda = 0;
@@ -105,38 +106,37 @@ public class Biudzetas {
                     switch (j) {
                         case 1:
                             double suma = Scan.getDbl();
-                            irasas.get(irasoIndeksas).setSuma(suma);
+                            koreguojamasIrasas.setSuma(suma);
                             break;
                         case 2:
                             LocalDate data = Scan.getDate();
-                            irasas.get(irasoIndeksas).setData(data);
+                            koreguojamasIrasas.setData(data);
                             break;
                         case 3:
                             String papildomaInfo = Scan.getStr();
-                            irasas.get(irasoIndeksas).setPapildomaInfo(papildomaInfo);
+                            koreguojamasIrasas.setPapildomaInfo(papildomaInfo);
                             break;
                         case 4:
-                            if (irasas.get(irasoIndeksas) instanceof PajamuIrasas) {
+                            if (koreguojamasIrasas instanceof PajamuIrasas) {
                                 boolean bankas = Scan.getBool();
-                                ((PajamuIrasas) irasas.get(irasoIndeksas)).setPozymisArIBanka(bankas);
+                                ((PajamuIrasas) koreguojamasIrasas).setPozymisArIBanka(bankas);
                                 break;
                             } else {
                                 String atsiskaitymoBudas = Scan.getStr();
-                                ((IslaiduIrasas) irasas.get(irasoIndeksas)).setAtsiskaitymoBudas(atsiskaitymoBudas);
+                                ((IslaiduIrasas) koreguojamasIrasas).setAtsiskaitymoBudas(atsiskaitymoBudas);
                                 break;
                             }
                     }
                 }
             }
+            atnaujintiIrasa(koreguojamasIrasas);
         }
     }
 
 
     public void atnaujintiIrasa(Irasas irasas) {
-        if(this.irasas.contains(irasas)){
             int indeksas = this.irasas.indexOf(irasas);
             this.irasas.set(indeksas,irasas);
-        }
     }
 
     public ArrayList<Irasas> getIrasas() {
